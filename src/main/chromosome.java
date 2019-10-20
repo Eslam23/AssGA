@@ -19,12 +19,18 @@ public class chromosome {
         
         fitness = 0;
     }
-    public int calcFitness(int [][]arr) {
+    public int calcFitness(int [][]arr,int weigth) {
 
         fitness = 0;
         for (int i = 0; i <genes.length ; i++) {
-            if (genes[i] == 1) {
+             if (genes[i] == 1) {
                 fitness+=arr[i][1];
+                if(fitness<=weigth)
+                    continue;
+                else{
+                    fitness-=arr[i][1];
+                    break;
+                }
             }
             
         }
