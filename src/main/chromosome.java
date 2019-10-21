@@ -1,41 +1,27 @@
 
 package main;
+
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-public class chromosome {
-    int fitness = 0;
-    int[] genes;
-   String filepath;
 
-    public chromosome(int itemNum) {
+public class chromosome
+{
+     int [] genes;
+    public chromosome(int size)
+    {
+        genes=new int[size];
         Random rn = new Random();
-        genes=new int[itemNum];
-
-        //Set genes randomly for each individual
-        for (int i = 0; i <itemNum; i++) {
+        for (int i = 0; i <size; i++) {
             genes[i] = Math.abs(rn.nextInt() % 2);
         }
-        
-        fitness = 0;
-    }
-    public int calcFitness(int [][]arr,int weigth) {
-
-        fitness = 0;
-        for (int i = 0; i <genes.length ; i++) {
-             if (genes[i] == 1) {
-                fitness+=arr[i][1];
-                if(fitness<=weigth)
-                    continue;
-                else{
-                    fitness-=arr[i][1];
-                    break;
-                }
-            }
-            
-        }
-        return fitness;
     }
 
-    
+
+    public void print()
+    {
+        for(int i=0;i<genes.length;i++)
+            System.out.print(genes[i]+"  ");
+
+    }
 }
